@@ -1,17 +1,113 @@
 ---
 title: "Tarea 1"
-author: "Gabriel Sanabria Alvarado
-Joseph
-Cris"
+author: 
+  - "Gabriel Sanabria Alvarado <span style='font-size:1em; color:#555;'> | Carné: </span>"
+  - "Joseph Romero Chinchilla <span style='font-size:1em; color:#555;'> | Carné: </span>" 
+  - "Cristhofer Urrutia Cascante <span style='font-size:1em; color:#555;'> | Carné: C37996 </span>"
+date: today
 format:
   html:
-    toc: true          
+    title-block-banner: true
+    toc: true
+    toc-title: "Ejercicios"   
     toc-depth: 2       
-    number-sections: true  
+    number-sections: false  
     self-contained: true   
-    theme: cosmo      
+    theme: flatly      
     css: styles.css   
+    smooth-scroll: true 
+    highlight-style: github
+    title-block-banner-meta-font-size: 1.5em
+    title-block-banner-divider: true  
+lang: es
 ---
+
+## Ejercicio 6 {-}
+### Cargue la tabla de datos que esta en el archivo SAheartv.csv haga lo siguiente:
+
+```{r}
+
+library(readr)
+
+SAheart <- read.csv("C:/Users/Josué/Documents/UCR-2025/llCiclo/Numérico/MiParteTarea1/SAheart.csv", sep = ";")
+
+```
+
+#### Calcule la dimensión de la tabla de datos:
+```{r}
+
+filas <- nrow(SAheart)
+columnas <- ncol(SAheart)
+
+dimensiones <- c("Filas" = filas, "Columnas" = columnas)
+print(dimensiones) 
+
+```
+
+#### Despliegue las primeras 3 columnas de la tabla de datos:
+```{r}
+
+columnas <- colnames(SAheart)
+print(columnas[1:3])
+
+```
+
+#### Ejecute un summary y str de la tabla de datos:
+```{r}
+print("Summary de la tabla de datos:")
+print(summary(SAheart))
+
+print("Str de la tabla de datos:")
+print(str(SAheart))
+
+```
+
+#### Usando el comando cor de R calcule la correlacion entre las variables tobacco y alcohol:
+```{r}
+
+corr_tobalc <- cor(SAheart$tobacco, SAheart$alcohol)
+
+print(corr_tobalc)
+
+```
+
+#### Calcule la suma de las columnas con variables cuantitativas (numericas):
+```{r}
+
+col_cuant <- SAheart[, sapply(SAheart, is.numeric)]
+suma_col_cuant <- apply(X = col_cuant, MARGIN = 2, FUN = sum)
+
+print(suma_col_cuant)
+
+```
+
+#### Calcule para todas las variables cuantitativas presentes en el archivo SAheart.csv: El mínimo, el máximo, la media, la mediana y para la variable chd determine la cantidad de Si y de No:
+```{r}
+
+estadisticas <- rbind(
+  minimo = apply(col_cuant, MARGIN = 2, FUN = min),
+  maximo = apply(col_cuant, MARGIN = 2, FUN = max),
+  media = apply(col_cuant, MARGIN = 2, FUN = mean),
+  mediana = apply(col_cuant, MARGIN = 2, FUN = median)
+)
+
+print(estadisticas)
+
+
+```
+
+```{r}
+
+num_si <- sum(SAheart$chd == "Si")
+num_no <- sum(SAheart$chd == "No")
+
+cantidad <- c("Si" = num_si, "No" = num_no)
+
+print("Cantidad de Si y No de la variable chd:")
+
+print(cantidad)
+
+```
 
 ## Ejercicio 13 {-}
 ### Desarrolle una función en R que reciba un DataFrame y que retorne la cantidad de entradas de este DataFrame que son divisibles entre 3. 
