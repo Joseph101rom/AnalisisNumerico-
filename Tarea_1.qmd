@@ -2,7 +2,7 @@
 title: "Tarea 1"
 author: 
   - "Gabriel Sanabria Alvarado <span style='font-size:1em; color:#555;'> | Carné: </span>"
-  - "Joseph Romero Chinchilla <span style='font-size:1em; color:#555;'> | Carné: </span>" 
+  - "Joseph Romero Chinchilla <span style='font-size:1em; color:#555;'> | Carné:C37006 </span>" 
   - "Cristhofer Urrutia Cascante <span style='font-size:1em; color:#555;'> | Carné: C37996 </span>"
 date: today
 format:
@@ -22,68 +22,305 @@ format:
 lang: es
 ---
 
-## Ejercicio 6 {-}
-### Cargue la tabla de datos que esta en el archivo SAheartv.csv haga lo siguiente:
+## Ejercicio 1
+
+Dado `x = (3, -5, 31, -1, -9, 10, 0, 18)` y `y = (1, 1, -3, 1, -99, -10, 10, -7)` realice:\
+
+-   Introduzca `x` y `y` como vectores en R.\
 
 ```{r}
-
-library(readr)
-
-SAheart <- read.csv("C:/Users/Josué/Documents/UCR-2025/llCiclo/Numérico/MiParteTarea1/SAheart.csv", sep = ";")
-
+x <- c(3, -5, 31, -1, -9, 10, 0, 18)
+y <- c(1, 1, -3, 1, -99, -10, 10, -7)
 ```
 
-#### Calcule la dimensión de la tabla de datos:
 ```{r}
+x
+```
 
+```{r}
+y
+```
+
+-   Calcule la media, varianza, raíz cuadrada y desviación estándar de `y`.\
+
+```{r}
+media.y <- mean(y)
+varianza.y <- var(y)
+raiz.cuadrada.y <- sqrt(y)
+desviacion.estandar.y <- sd(y)
+```
+
+```{r}
+media.y
+```
+
+```{r}
+varianza.y
+```
+
+```{r}
+raiz.cuadrada.y
+```
+
+```{r}
+desviacion.estandar.y
+```
+
+-   Calcule la media, varianza, raíz cuadrada y desviación estándar de `x`.\
+
+```{r}
+media.x <- mean(x)
+varianza.x <- var(x)
+raiz.cuadrada.x <- sqrt(x)
+desviacion.estandar.x <- sd(x)
+```
+
+```{r}
+media.x
+```
+
+```{r}
+varianza.x
+```
+
+```{r}
+raiz.cuadrada.x
+```
+
+```{r}
+desviacion.estandar.x
+```
+
+-   Calcule la correlación entre `x` y `y`.\
+
+```{r}
+correlacion.xy <- cor(x, y)
+correlacion.xy
+```
+
+-   Extraiga las entradas 2 a la 7 de `x`.\
+
+```{r}
+entradas.x <- x[2 : 7]
+entradas.x
+```
+
+-   Extraiga las entradas de `y` excepto la 2 y la 7.\
+
+```{r}
+entradas.y <- y[-c(2, 7)]
+entradas.y
+```
+
+-   Extraiga las entradas de `y` menores a -3 o mayores a 10.\
+
+```{r}
+entradas2.y <- y[y < -3 | y > 10]
+entradas2.y
+```
+
+-   Extraiga las entradas de `x` mayores a 0 y pares.\
+
+```{r}
+entradas2.x <- x[x > 0 & x %% 2 == 0]
+entradas2.x
+```
+
+## Ejercicio 2
+
+Introduzca en R la siguiente matriz a 4 x 3 usando:\
+
+```{r}
+A = matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12), nrow = 4, "byrow" = "true")
+A
+```
+
+Luego, obtenga algunos elementos de la matriz de la siguiente manera y explique que pasa en cada caso:
+
+```{r}
+A.1 <- A[1, 1:3]
+A.1
+```
+
+Esto lo que muestra es la fila 1, y las columnas de las 1 a las 3.
+
+```{r}
+A.2 <- A[1:4, 2]
+A.2
+```
+
+Esta muestra las filas de la 1 a la 4, en la columna 2
+
+```{r}
+A.3 <- A[3, 3]
+A.3
+```
+
+Esta muestra la entrada de la fila 3 y columna 3
+
+```{r}
+A.4 <- A[11]
+A.4
+```
+
+Esto lo que hace es que recorre la matriz columna por columna de arriba abajo, y para hasta llegar al espacio numero 11
+
+```{r}
+A.5 <- A[20]
+A.5
+```
+
+Aca el resultado es NA ya que no existe tal entrada, al ser una matriz 4\*3 solo hay 12 posibles entradas
+
+```{r, error = TRUE}
+A.6 <- A[5,4]
+A.6
+```
+
+Aca trata de ingresar a una fila que no existe por lo que da error
+
+```{r, error = TRUE}
+A.7 <- A[1,1,1]
+A.7
+```
+
+Esta matriz solo tiene dos dimensiones , por lo que al tratar de buscar informacion en una tercera da error.
+
+## Ejercicio 3
+
+Investigue para que sirven los comandos de R as.matrix(...) y as.data.frame(...), explique y de un ejemplo de cada uno.
+
+-   *as.matrix(...)*: La funcion as.matrix(...) lo que hace es que recibe un objeto, como un vector, lista o dataframe y lo transforma en una matriz. Esto sin importar si es numerico o no.(GeeksforGeeks, 2025)\
+
+**Referencia:** GeeksforGeeks. (2025, April 30). Convert an object into a matrix in R Programming - as.matrix() Function. https://www.geeksforgeeks.org/r-language/convert-an-object-into-a-matrix-in-r-programming-as-matrix-function/
+
+**Ejemplo**
+
+```{r}
+x <- c("hola", 1, 2, 3, "pepe")
+matriz.x <- as.matrix(x)
+matriz.x
+```
+
+-   *as.data.frame(...)*: La funcion as.data.frame(...) lo que hace es que toma objetos como listas, matrices o vectores y los convierte en un dataframe (RDocumentation, 2025).\
+
+**Referencia:** RDocumentation. (2025). as.data.frame function. https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/as.data.frame
+
+**Ejemplo**
+
+```{r}
+B = matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = FALSE)
+B
+dataframe.B <- as.data.frame(B)
+dataframe.B
+```
+
+## Ejercicio 4
+
+Introduzca usando codigo R (no archivos) en un DataFrame la siguiente tabla de datos:
+
+![](Data_Ej_4.jpg)\
+
+```{r}
+dataframe.ej.4 <- data.frame(Peso = c(76, 67, 55, 57, 87, 58), 
+                             Edad = c(25, 23, 19, 18, 57, 13), 
+                             Nivel_Educativo = c("Lic", "Bach", "Bach", "Bach", "Dr", "MSc")
+)
+dataframe.ej.4
+```
+
+## Ejercicio 5
+
+En muchas ocasiones nos interesa hacer referencia a determinadas partes o componentes de un vector. Defina el vector `x = (2, -5, 4, 6, -2, 8)`,luego a partir de este vector defina instrucciones en R para generar los siguientes vectores:\
+
+```{r}
+x = c(2, -5, 4, 6, -2, 8)
+x
+```
+
+-   `y = (2, 4, 6, 8)`, asi definido `y` es el vector formado por las componentes positivas de `x`.\
+
+```{r}
+y = x[x > 0]
+y
+```
+
+-   `z = (−5, −2)`, asi definido `z` es el vector formado por las componentes negativas de `x`.\
+
+```{r}
+z = x[x < 0]
+z
+```
+
+-   `v = (−5, 4, 6, −2, 8)`, asi definido `v` es el vector `x` eliminada la primera componente.\
+
+```{r}
+v = x[-1]
+v
+```
+
+-   `w = (2, 4, −2)`, ası definido `w` es el vector `x` tomando las componentes con ´ındice impares, es decir, `x`\[1\] = 2, `x`\[3\] = 4 y `x`\[5\] = −2.\
+
+```{r}
+w = x[-c(2,4,6)]
+w
+```
+
+## Ejercicio 6
+
+Cargue la tabla de datos que esta en el archivo SAheartv.csv haga lo siguiente:\
+
+```{r}
+library(readr)
+SAheart <- read_delim("SAheart.csv", delim = ";", escape_double = FALSE, trim_ws = TRUE)
+SAheart
+```
+
+- Calcule la dimensión de la tabla de datos:\
+
+```{r}
 filas <- nrow(SAheart)
 columnas <- ncol(SAheart)
-
 dimensiones <- c("Filas" = filas, "Columnas" = columnas)
-print(dimensiones) 
-
+dimensiones
 ```
 
-#### Despliegue las primeras 3 columnas de la tabla de datos:
+- Despliegue las primeras 3 columnas de la tabla de datos:\
+
 ```{r}
-
-columnas <- colnames(SAheart)
-print(columnas[1:3])
-
+columnas <- SAheart[, 1:3]
+columnas
 ```
 
-#### Ejecute un summary y str de la tabla de datos:
+- Ejecute un summary y str de la tabla de datos:\
+
 ```{r}
-print("Summary de la tabla de datos:")
-print(summary(SAheart))
-
-print("Str de la tabla de datos:")
-print(str(SAheart))
-
+summary(SAheart)
 ```
 
-#### Usando el comando cor de R calcule la correlacion entre las variables tobacco y alcohol:
-```{r}
 
+```{r}
+str(SAheart)
+```
+
+- Usando el comando cor de R calcule la correlacion entre las variables tobacco y alcohol:\
+
+```{r}
 corr_tobalc <- cor(SAheart$tobacco, SAheart$alcohol)
-
-print(corr_tobalc)
-
+corr_tobalc
 ```
 
-#### Calcule la suma de las columnas con variables cuantitativas (numericas):
-```{r}
+- Calcule la suma de las columnas con variables cuantitativas (numericas):\
 
+```{r}
 col_cuant <- SAheart[, sapply(SAheart, is.numeric)]
 suma_col_cuant <- apply(X = col_cuant, MARGIN = 2, FUN = sum)
-
-print(suma_col_cuant)
-
+suma_col_cuant
 ```
 
-#### Calcule para todas las variables cuantitativas presentes en el archivo SAheart.csv: El mínimo, el máximo, la media, la mediana y para la variable chd determine la cantidad de Si y de No:
-```{r}
+- Calcule para todas las variables cuantitativas presentes en el archivo SAheart.csv: El mínimo, el máximo, la media, la mediana y para la variable chd determine la cantidad de Si y de No:\
 
+```{r}
 estadisticas <- rbind(
   minimo = apply(col_cuant, MARGIN = 2, FUN = min),
   maximo = apply(col_cuant, MARGIN = 2, FUN = max),
@@ -91,53 +328,42 @@ estadisticas <- rbind(
   mediana = apply(col_cuant, MARGIN = 2, FUN = median)
 )
 
-print(estadisticas)
-
-
+estadisticas
 ```
-
+Cantidad de Si y No de la variable chd:\
 ```{r}
-
 num_si <- sum(SAheart$chd == "Si")
 num_no <- sum(SAheart$chd == "No")
-
 cantidad <- c("Si" = num_si, "No" = num_no)
-
-print("Cantidad de Si y No de la variable chd:")
-
-print(cantidad)
-
+cantidad
 ```
 
-## Ejercicio 7 {-}
-### Programe en R una función que genera 200 números al azar entre 1 y 500 y luego calcula cuántos están entre el 50 y 450, ambos inclusive: 
+## Ejercicio 7
+
+Programe en R una función que genera 200 números al azar entre 1 y 500 y luego calcula cuántos están entre el 50 y 450, ambos inclusive:\
 
 ```{r}
-
 contar_aleatorios <- function() {
-  
   lista_aleatoria <- round(runif(200, 1, 500), 0)
-  
   cantidad_en_rango <- NROW(lista_aleatoria[lista_aleatoria >= 50 & lista_aleatoria <= 450])
   print(paste("Cantidad de números aleatorios entre 50 y 450:", cantidad_en_rango))
-
 }
 
 ```
+
 ```{r}
 
 contar_aleatorios()
 
 ```
 
+## Ejercicio 8
 
-## Ejercicio 8 {-}
-### Desarrolle una función que calcula el costo de una llamada telefónica que ha durado t minutos sabiendo que si t < 1 el costo es de 0,4 dólares, mientras que para duraciones superiores el costo es de 0,4 + (t-1)/4 dólares, la función debe recibir el valor de t:
+Desarrolle una función que calcula el costo de una llamada telefónica que ha durado t minutos sabiendo que si t \< 1 el costo es de 0,4 dólares, mientras que para duraciones superiores el costo es de 0,4 + (t-1)/4 dólares, la función debe recibir el valor de t:\
 
 ```{r}
-
 costo_llamada <- function(t){
-  
+
   if(t < 1) {
     costo <- 0.4
   }
@@ -150,6 +376,7 @@ costo_llamada <- function(t){
 }
 
 ```
+
 ```{r}
 
 costo_llamada(0.3)
@@ -157,11 +384,11 @@ costo_llamada(5)
 
 ```
 
-## Ejercicio 9 {-}
-### Desarrolle una función que recibe una matriz cuadrada A de tamaño n x n y calcula su traza, es decir, la suma de los elementos de la diagonal:
+## Ejercicio 9
+
+Desarrolle una función que recibe una matriz cuadrada A de tamaño n x n y calcula su traza, es decir, la suma de los elementos de la diagonal:\
 
 ```{r}
-
 traza <- function(A){
   
   B <- A
@@ -183,6 +410,7 @@ traza <- function(A){
 }
 
 ```
+
 ```{r}
 
 mat <- matrix(c(9, 1, 4,   
@@ -190,13 +418,13 @@ mat <- matrix(c(9, 1, 4,
                 4, 1, -2),
               nrow = 3,    
               ncol = 3) 
-
-print(paste("La traza de la matriz digitada es de:",traza(mat)))
+traza(mat)
 
 ```
 
-## Ejercicio 10 {-}
-### Escribir una función que genere los n primeros términos de la serie de Fibonacci:
+## Ejercicio 10
+
+Escribir una función que genere los n primeros términos de la serie de Fibonacci:\
 
 ```{r}
 
@@ -234,8 +462,22 @@ Fibonacci <- function(n){
 Fibonacci(8)
 ```
 
-## Ejercicio 13 {-}
-### Desarrolle una función en R que reciba un DataFrame y que retorne la cantidad de entradas de este DataFrame que son divisibles entre 3:
+## Ejercicio 12
+
+Crear un Data Frame con diez alumnos con su edad, año de nacimiento y numero de telefono. Deberia aparecer el nombre de la columna (edad, año de nacimiento, telefono) y el nombre dela fila, que sera el nombre del alumno al que corresponden los datos:\
+
+```{r}
+data.ej12 <- data.frame(row.names = c("Luis", "Lucia", "Jaime", "Mario", "Enrique", "Gabriel", "Joseph", "Cristhofer", "Caleb", "Edgar"),
+                        Edad = c(17, 18, 20, 17, 19, 21, 22, 25, 17, 19),
+                        AñoNacimiento = c(2008, 2007, 2005, 2008, 2006, 2004, 2003, 2000, 2008, 2006),
+                        Telefono = c(88881234, 61234567, 70123456, 85436721, 72739284, 63928475, 90128374, 82476192, 71192834, 64273819)
+                        )
+data.ej12
+```
+
+## Ejercicio 13
+
+Desarrolle una función en R que reciba un DataFrame y que retorne la cantidad de entradas de este DataFrame que son divisibles entre 3:\
 
 ```{r}
 divisibles <- function(df) {
@@ -247,21 +489,19 @@ divisibles <- function(df) {
   
 }
 ```
+
 ```{r}
 
 data(women)
 women
 
 ```
+
 ```{r}
-
-print(divisibles(women))
-
+divisibles(women)
 ```
 
-
-## Ejercicio 14 {-}
-
+## Ejercicio 14
 
 ```{r}
 columnas <- function(df, num1, num2){
@@ -271,9 +511,9 @@ columnas <- function(df, num1, num2){
 }
 ```
 
+## Ejercicio 19
 
-## Ejercicio 19 {-}
-### Desarrolle una funcion R que recibe un Data Frame y dos numeros de columna y que retorna en una lista el nombre de las variables correspondientes a las columnas, la covarianza y la correlación entre esas dos variables. Pruebe la funcion usando el archivo EjemploEstudiantes.csv:
+Desarrolle una funcion R que recibe un Data Frame y dos numeros de columna y que retorna en una lista el nombre de las variables correspondientes a las columnas, la covarianza y la correlación entre esas dos variables. Pruebe la funcion usando el archivo EjemploEstudiantes.csv:\
 
 ```{r}
 
@@ -295,15 +535,11 @@ estadisticas_df <- function(df, col1, col2){
 }
 
 ```
+
 ```{r}
 
-estudiantes <- read.csv("C:/Users/Josué/Documents/UCR-2025/llCiclo/Numérico/Tareas/AnalisisNumerico-/tablas_tarea_1/EjemploEstudiantes.csv", sep = ";")
+estudiantes <- read.csv("tablas_tarea_1/EjemploEstudiantes.csv", sep = ";")
 
 print(estadisticas_df(estudiantes, 2, 4))
 
 ```
-
-
-
-
-
