@@ -3111,8 +3111,13 @@ vertical-align: -.125em;
    
   <ul class="collapse">
   <li><a href="#ejercicio-6" id="toc-ejercicio-6" class="nav-link active" data-scroll-target="#ejercicio-6">Ejercicio 6</a></li>
+  <li><a href="#ejercicio-7" id="toc-ejercicio-7" class="nav-link" data-scroll-target="#ejercicio-7">Ejercicio 7</a></li>
+  <li><a href="#ejercicio-8" id="toc-ejercicio-8" class="nav-link" data-scroll-target="#ejercicio-8">Ejercicio 8</a></li>
+  <li><a href="#ejercicio-9" id="toc-ejercicio-9" class="nav-link" data-scroll-target="#ejercicio-9">Ejercicio 9</a></li>
+  <li><a href="#ejercicio-10" id="toc-ejercicio-10" class="nav-link" data-scroll-target="#ejercicio-10">Ejercicio 10</a></li>
   <li><a href="#ejercicio-13" id="toc-ejercicio-13" class="nav-link" data-scroll-target="#ejercicio-13">Ejercicio 13</a></li>
   <li><a href="#ejercicio-14" id="toc-ejercicio-14" class="nav-link" data-scroll-target="#ejercicio-14">Ejercicio 14</a></li>
+  <li><a href="#ejercicio-19" id="toc-ejercicio-19" class="nav-link" data-scroll-target="#ejercicio-19">Ejercicio 19</a></li>
   </ul>
 </nav>
 </div>
@@ -3274,34 +3279,178 @@ mediana 45.00000</code></pre>
 </section>
 </section>
 </section>
+<section id="ejercicio-7" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="ejercicio-7">Ejercicio 7</h2>
+<section id="programe-en-r-una-función-que-genera-200-números-al-azar-entre-1-y-500-y-luego-calcula-cuántos-están-entre-el-50-y-450-ambos-inclusive" class="level3">
+<h3 class="anchored" data-anchor-id="programe-en-r-una-función-que-genera-200-números-al-azar-entre-1-y-500-y-luego-calcula-cuántos-están-entre-el-50-y-450-ambos-inclusive">Programe en R una función que genera 200 números al azar entre 1 y 500 y luego calcula cuántos están entre el 50 y 450, ambos inclusive:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>contar_aleatorios <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  lista_aleatoria <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">200</span>, <span class="dv">1</span>, <span class="dv">500</span>), <span class="dv">0</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  cantidad_en_rango <span class="ot">&lt;-</span> <span class="fu">NROW</span>(lista_aleatoria[lista_aleatoria <span class="sc">&gt;=</span> <span class="dv">50</span> <span class="sc">&amp;</span> lista_aleatoria <span class="sc">&lt;=</span> <span class="dv">450</span>])</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Cantidad de números aleatorios entre 50 y 450:&quot;</span>, cantidad_en_rango))</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contar_aleatorios</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] &quot;Cantidad de números aleatorios entre 50 y 450: 158&quot;</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="ejercicio-8" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="ejercicio-8">Ejercicio 8</h2>
+<section id="desarrolle-una-función-que-calcula-el-costo-de-una-llamada-telefónica-que-ha-durado-t-minutos-sabiendo-que-si-t-1-el-costo-es-de-04-dólares-mientras-que-para-duraciones-superiores-el-costo-es-de-04-t-14-dólares-la-función-debe-recibir-el-valor-de-t" class="level3">
+<h3 class="anchored" data-anchor-id="desarrolle-una-función-que-calcula-el-costo-de-una-llamada-telefónica-que-ha-durado-t-minutos-sabiendo-que-si-t-1-el-costo-es-de-04-dólares-mientras-que-para-duraciones-superiores-el-costo-es-de-04-t-14-dólares-la-función-debe-recibir-el-valor-de-t">Desarrolle una función que calcula el costo de una llamada telefónica que ha durado t minutos sabiendo que si t &lt; 1 el costo es de 0,4 dólares, mientras que para duraciones superiores el costo es de 0,4 + (t-1)/4 dólares, la función debe recibir el valor de t:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>costo_llamada <span class="ot">&lt;-</span> <span class="cf">function</span>(t){</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(t <span class="sc">&lt;</span> <span class="dv">1</span>) {</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    costo <span class="ot">&lt;-</span> <span class="fl">0.4</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>{</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    costo <span class="ot">&lt;-</span> <span class="fl">0.4</span> <span class="sc">+</span> (t <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span><span class="dv">4</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;El costo de la llamada fue de: &quot;</span>, costo, <span class="st">&quot;$&quot;</span>))</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">costo_llamada</span>(<span class="fl">0.3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] &quot;El costo de la llamada fue de: 0.4$&quot;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">costo_llamada</span>(<span class="dv">5</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] &quot;El costo de la llamada fue de: 1.4$&quot;</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="ejercicio-9" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="ejercicio-9">Ejercicio 9</h2>
+<section id="desarrolle-una-función-que-recibe-una-matriz-cuadrada-a-de-tamaño-n-x-n-y-calcula-su-traza-es-decir-la-suma-de-los-elementos-de-la-diagonal" class="level3">
+<h3 class="anchored" data-anchor-id="desarrolle-una-función-que-recibe-una-matriz-cuadrada-a-de-tamaño-n-x-n-y-calcula-su-traza-es-decir-la-suma-de-los-elementos-de-la-diagonal">Desarrolle una función que recibe una matriz cuadrada A de tamaño n x n y calcula su traza, es decir, la suma de los elementos de la diagonal:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>traza <span class="ot">&lt;-</span> <span class="cf">function</span>(A){</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  B <span class="ot">&lt;-</span> A</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  numero_filas <span class="ot">&lt;-</span> <span class="fu">NROW</span>(A)</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  suma_diagonal <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span>(numero_filas <span class="sc">&gt;</span> <span class="dv">1</span>) {</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    suma_diagonal <span class="ot">&lt;-</span> suma_diagonal <span class="sc">+</span> B[<span class="dv">1</span>, <span class="dv">1</span>]</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>    B <span class="ot">&lt;-</span> B[<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>    numero_filas <span class="ot">&lt;-</span> <span class="fu">NROW</span>(B)</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>  suma_diagonal <span class="ot">&lt;-</span> suma_diagonal <span class="sc">+</span> B</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(suma_diagonal)</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">1</span>, <span class="dv">4</span>,   </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>                <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">12</span>,  </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>                <span class="dv">4</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">2</span>),</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">nrow =</span> <span class="dv">3</span>,    </span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">ncol =</span> <span class="dv">3</span>) </span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;La traza de la matriz digitada es de:&quot;</span>,<span class="fu">traza</span>(mat)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] &quot;La traza de la matriz digitada es de: 10&quot;</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="ejercicio-10" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="ejercicio-10">Ejercicio 10</h2>
+<section id="escribir-una-función-que-genere-los-n-primeros-términos-de-la-serie-de-fibonacci" class="level3">
+<h3 class="anchored" data-anchor-id="escribir-una-función-que-genere-los-n-primeros-términos-de-la-serie-de-fibonacci">Escribir una función que genere los n primeros términos de la serie de Fibonacci:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>Fibonacci <span class="ot">&lt;-</span> <span class="cf">function</span>(n){</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(n <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">c</span>())</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> <span class="cf">if</span>(n <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">0</span>)</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>{</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    contador <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>    fk <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>    fn <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>    terminos <span class="ot">&lt;-</span> <span class="fu">c</span>(fk, fn)</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span>(contador <span class="sc">&lt;=</span> n <span class="sc">-</span> <span class="dv">2</span>){</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>      terminos <span class="ot">&lt;-</span> <span class="fu">append</span>(terminos, fn <span class="sc">+</span> fk)</span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>      fn <span class="ot">&lt;-</span> terminos[contador <span class="sc">+</span> <span class="dv">3</span>]</span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>      fk <span class="ot">&lt;-</span> terminos[contador <span class="sc">+</span> <span class="dv">2</span>]</span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>      contador <span class="ot">&lt;-</span> contador <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(terminos[<span class="sc">-</span><span class="dv">1</span>])</span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a><span class="fu">Fibonacci</span>(<span class="dv">8</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  1  1  2  3  5  8 13 21</code></pre>
+</div>
+</div>
+</section>
+</section>
 <section id="ejercicio-13" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="ejercicio-13">Ejercicio 13</h2>
-<section id="desarrolle-una-función-en-r-que-reciba-un-dataframe-y-que-retorne-la-cantidad-de-entradas-de-este-dataframe-que-son-divisibles-entre-3." class="level3">
-<h3 class="anchored" data-anchor-id="desarrolle-una-función-en-r-que-reciba-un-dataframe-y-que-retorne-la-cantidad-de-entradas-de-este-dataframe-que-son-divisibles-entre-3.">Desarrolle una función en R que reciba un DataFrame y que retorne la cantidad de entradas de este DataFrame que son divisibles entre 3.</h3>
+<section id="desarrolle-una-función-en-r-que-reciba-un-dataframe-y-que-retorne-la-cantidad-de-entradas-de-este-dataframe-que-son-divisibles-entre-3" class="level3">
+<h3 class="anchored" data-anchor-id="desarrolle-una-función-en-r-que-reciba-un-dataframe-y-que-retorne-la-cantidad-de-entradas-de-este-dataframe-que-son-divisibles-entre-3">Desarrolle una función en R que reciba un DataFrame y que retorne la cantidad de entradas de este DataFrame que son divisibles entre 3:</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>divisibles<span class="fl">.3</span> <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  valores <span class="ot">&lt;-</span> <span class="fu">unlist</span>(df)          </span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  valores_numericos <span class="ot">&lt;-</span> valores[<span class="fu">is.numeric</span>(valores)] </span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  cantidad <span class="ot">&lt;-</span> <span class="fu">sum</span>(valores_numericos <span class="sc">%%</span> <span class="dv">3</span> <span class="sc">==</span> <span class="dv">0</span>)     </span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(cantidad)</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>divisibles <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  valores <span class="ot">&lt;-</span> <span class="fu">unlist</span>(df)          </span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  valores_numericos <span class="ot">&lt;-</span> valores[<span class="fu">is.numeric</span>(valores)] </span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  cantidad <span class="ot">&lt;-</span> <span class="fu">sum</span>(valores_numericos <span class="sc">%%</span> <span class="dv">3</span> <span class="sc">==</span> <span class="dv">0</span>)     </span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(cantidad)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(women)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(women)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(women)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>women</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  height weight
-1     58    115
-2     59    117
-3     60    120
-4     61    123
-5     62    126
-6     63    129</code></pre>
+<pre><code>   height weight
+1      58    115
+2      59    117
+3      60    120
+4      61    123
+5      62    126
+6      63    129
+7      64    132
+8      65    135
+9      66    139
+10     67    142
+11     68    146
+12     69    150
+13     70    154
+14     71    159
+15     72    164</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divisibles.3</span>(women)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">divisibles</span>(women))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 14</code></pre>
 </div>
@@ -3311,12 +3460,51 @@ mediana 45.00000</code></pre>
 <section id="ejercicio-14" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="ejercicio-14">Ejercicio 14</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>columnas <span class="ot">&lt;-</span> <span class="cf">function</span>(df, num1, num2){</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>columnas <span class="ot">&lt;-</span> <span class="cf">function</span>(df, num1, num2){</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="ejercicio-19" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="ejercicio-19">Ejercicio 19</h2>
+<section id="desarrolle-una-funcion-r-que-recibe-un-data-frame-y-dos-numeros-de-columna-y-que-retorna-en-una-lista-el-nombre-de-las-variables-correspondientes-a-las-columnas-la-covarianza-y-la-correlación-entre-esas-dos-variables.-pruebe-la-funcion-usando-el-archivo-ejemploestudiantes.csv" class="level3">
+<h3 class="anchored" data-anchor-id="desarrolle-una-funcion-r-que-recibe-un-data-frame-y-dos-numeros-de-columna-y-que-retorna-en-una-lista-el-nombre-de-las-variables-correspondientes-a-las-columnas-la-covarianza-y-la-correlación-entre-esas-dos-variables.-pruebe-la-funcion-usando-el-archivo-ejemploestudiantes.csv">Desarrolle una funcion R que recibe un Data Frame y dos numeros de columna y que retorna en una lista el nombre de las variables correspondientes a las columnas, la covarianza y la correlación entre esas dos variables. Pruebe la funcion usando el archivo EjemploEstudiantes.csv:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>estadisticas_df <span class="ot">&lt;-</span> <span class="cf">function</span>(df, col1, col2){</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  columna1 <span class="ot">&lt;-</span> <span class="fu">colnames</span>(df)[col1]</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  columna2 <span class="ot">&lt;-</span> <span class="fu">colnames</span>(df)[col2]</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  cov_columnas <span class="ot">&lt;-</span> <span class="fu">cov</span>(<span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">&quot;,&quot;</span>, <span class="st">&quot;.&quot;</span>, df[[columna1]])), <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">&quot;,&quot;</span>, <span class="st">&quot;.&quot;</span>, df[[columna2]])))</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  cor_columnas <span class="ot">&lt;-</span> <span class="fu">cor</span>(<span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">&quot;,&quot;</span>, <span class="st">&quot;.&quot;</span>, df[[columna1]])), <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">&quot;,&quot;</span>, <span class="st">&quot;.&quot;</span>, df[[columna2]])))</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">Columnas =</span> <span class="fu">c</span>(columna1, columna2),</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Covarianza =</span> cov_columnas,</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>    Correlación <span class="ot">=</span> cor_columnas</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>estudiantes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;C:/Users/Josué/Documents/UCR-2025/llCiclo/Numérico/Tareas/AnalisisNumerico-/tablas_tarea_1/EjemploEstudiantes.csv&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">estadisticas_df</span>(estudiantes, <span class="dv">2</span>, <span class="dv">4</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$Columnas
+[1] &quot;Matematicas&quot; &quot;Espanol&quot;    
+
+$Covarianza
+[1] 0.3148889
+
+$Correlación
+[1] 0.3845742</code></pre>
+</div>
+</div>
+</section>
 </section>
 
 </main>

@@ -109,26 +109,154 @@ print(cantidad)
 
 ```
 
-## Ejercicio 13 {-}
-### Desarrolle una función en R que reciba un DataFrame y que retorne la cantidad de entradas de este DataFrame que son divisibles entre 3. 
+## Ejercicio 7 {-}
+### Programe en R una función que genera 200 números al azar entre 1 y 500 y luego calcula cuántos están entre el 50 y 450, ambos inclusive: 
 
 ```{r}
-divisibles.3 <- function(df) {
+
+contar_aleatorios <- function() {
+  
+  lista_aleatoria <- round(runif(200, 1, 500), 0)
+  
+  cantidad_en_rango <- NROW(lista_aleatoria[lista_aleatoria >= 50 & lista_aleatoria <= 450])
+  print(paste("Cantidad de números aleatorios entre 50 y 450:", cantidad_en_rango))
+
+}
+
+```
+```{r}
+
+contar_aleatorios()
+
+```
+
+
+## Ejercicio 8 {-}
+### Desarrolle una función que calcula el costo de una llamada telefónica que ha durado t minutos sabiendo que si t < 1 el costo es de 0,4 dólares, mientras que para duraciones superiores el costo es de 0,4 + (t-1)/4 dólares, la función debe recibir el valor de t:
+
+```{r}
+
+costo_llamada <- function(t){
+  
+  if(t < 1) {
+    costo <- 0.4
+  }
+  else{
+    costo <- 0.4 + (t - 1)/4
+  }
+  
+  print(paste0("El costo de la llamada fue de: ", costo, "$"))
+  
+}
+
+```
+```{r}
+
+costo_llamada(0.3)
+costo_llamada(5)
+
+```
+
+## Ejercicio 9 {-}
+### Desarrolle una función que recibe una matriz cuadrada A de tamaño n x n y calcula su traza, es decir, la suma de los elementos de la diagonal:
+
+```{r}
+
+traza <- function(A){
+  
+  B <- A
+  numero_filas <- NROW(A)
+  suma_diagonal <- 0
+  
+  while(numero_filas > 1) {
+    
+    suma_diagonal <- suma_diagonal + B[1, 1]
+    B <- B[-1, -1]
+    numero_filas <- NROW(B)
+    
+  }
+  
+  suma_diagonal <- suma_diagonal + B
+  
+  return(suma_diagonal)
+  
+}
+
+```
+```{r}
+
+mat <- matrix(c(9, 1, 4,   
+                3, 3, 12,  
+                4, 1, -2),
+              nrow = 3,    
+              ncol = 3) 
+
+print(paste("La traza de la matriz digitada es de:",traza(mat)))
+
+```
+
+## Ejercicio 10 {-}
+### Escribir una función que genere los n primeros términos de la serie de Fibonacci:
+
+```{r}
+
+Fibonacci <- function(n){
+  
+  if(n == 0){
+    return(c())
+  }
+  else if(n == 1)
+    return(0)
+  else{
+      
+    contador <- 0
+    fk <- 0
+    fn <- 1
+    terminos <- c(fk, fn)
+    
+    while(contador <= n - 2){
+      
+      terminos <- append(terminos, fn + fk)
+      
+      fn <- terminos[contador + 3]
+      fk <- terminos[contador + 2]
+      
+      contador <- contador + 1
+      
+    }
+    
+    return(terminos[-1])
+      
+    }
+  
+}
+
+Fibonacci(8)
+```
+
+## Ejercicio 13 {-}
+### Desarrolle una función en R que reciba un DataFrame y que retorne la cantidad de entradas de este DataFrame que son divisibles entre 3:
+
+```{r}
+divisibles <- function(df) {
   
   valores <- unlist(df)          
   valores_numericos <- valores[is.numeric(valores)] 
   cantidad <- sum(valores_numericos %% 3 == 0)     
   return(cantidad)
+  
 }
 ```
-
 ```{r}
+
 data(women)
-head(women)
+women
 
 ```
 ```{r}
-divisibles.3(women)
+
+print(divisibles(women))
+
 ```
 
 
@@ -143,6 +271,37 @@ columnas <- function(df, num1, num2){
 }
 ```
 
+
+## Ejercicio 19 {-}
+### Desarrolle una funcion R que recibe un Data Frame y dos numeros de columna y que retorna en una lista el nombre de las variables correspondientes a las columnas, la covarianza y la correlación entre esas dos variables. Pruebe la funcion usando el archivo EjemploEstudiantes.csv:
+
+```{r}
+
+estadisticas_df <- function(df, col1, col2){
+  
+  columna1 <- colnames(df)[col1]
+  columna2 <- colnames(df)[col2]
+  
+  cov_columnas <- cov(as.numeric(gsub(",", ".", df[[columna1]])), as.numeric(gsub(",", ".", df[[columna2]])))
+  cor_columnas <- cor(as.numeric(gsub(",", ".", df[[columna1]])), as.numeric(gsub(",", ".", df[[columna2]])))
+  
+  return(list(
+    Columnas = c(columna1, columna2),
+    Covarianza = cov_columnas,
+    Correlación = cor_columnas
+  ))
+  
+  
+}
+
+```
+```{r}
+
+estudiantes <- read.csv("C:/Users/Josué/Documents/UCR-2025/llCiclo/Numérico/Tareas/AnalisisNumerico-/tablas_tarea_1/EjemploEstudiantes.csv", sep = ";")
+
+print(estadisticas_df(estudiantes, 2, 4))
+
+```
 
 
 
